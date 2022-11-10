@@ -1,19 +1,19 @@
 import React from 'react'
 
-function CountryCard() {
+function CountryCard({name,continent,emoji}) {
+
   return (
-    <div className='px-6 py-2'>
-        <div className='flex items-center w-1/4 justify-between'>
-            <span><i className='fa-regular fa-flag'></i></span>
-            <h1 className='italic'>Netherland</h1>
+    <div className='pl-6 pt-2'>
+        <div className='flex items-center'>
+            <span>{emoji}</span>
+            <h1 className='font-semibold text-xl ml-2'>{name}</h1>
         </div>
-        <div className='flex items-center mt-[1px] w-4/12 italic font-normal'>
+        <div className='flex items-center mt-[1px]  font-semibold text-xl'>
             <h1>Continent:</h1>
-            <span className='ml-1'>Europe</span>
+            <span className='ml-1'>{continent.name}</span>
         </div>
-        <button className='bg-black text-[#ccc] mt-[1px] font-thin text-sm py-1 px-4'>See details...</button>
+        <button className='bg-black mt-[1px] text-white text-lg py-1 px-4'>see details...</button>
     </div>
   )
 }
-
 export default CountryCard
