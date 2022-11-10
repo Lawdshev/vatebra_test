@@ -6,7 +6,7 @@ function Home() {
     const [input, setInput] = useState('');
     const [list,setList] = useState([]);
     const [searchList,setSearchList] = useState([]);
-    const [error,setError] = useState('');
+    const [error,setError] = useState('')
 
     
       useEffect(() => {
@@ -35,15 +35,15 @@ function Home() {
       }, [])
 
       const search =()=>{
+        if(input==''){
+            setError('Enter Valid Keyword')
+        }else{
+            setError('Country not found')
+        }
         const newList = list.filter(country=>{
           return country.name.toLowerCase().includes(input.toLowerCase());
         })
-        if (newList.lenght<1 || input=='') {
-            setError('No Country Found')
-            return
-        }
         setSearchList(newList)
-        console.log(newList)
       }
 
 
@@ -62,7 +62,7 @@ function Home() {
         <div className='border-b-2 border-b-black border-b-solid px-3 md:px-8 py-4'>
             <h1 className='font-semibold text-2xl'>Keyword</h1>
             <div className='w-[90%] flex items-center'>
-                <input type="text" className='border-2 border-black border-solid w-4/6 py-[0.21rem] px-2 font-semibold text-xl'  value={input} onChange={(e) => setInput(e.target.value)}/>
+                <input type="text" className='border-2 border-black border-solid w-4/6 py-[0.21rem] px-2 font-semibold text-xl'  value={input} onChange={(e) => {setInput(e.target.value);setError('')}}/>
                 <button type="submit" className='bg-black py-[0.27rem] px-6 text-white text-xl ml-1 ' id='search' onClick={search}>search</button>
             </div>      
         </div>
